@@ -1,0 +1,51 @@
+[core]
+	excludesfile = /Users/jejacks0n/.config/git/ignore
+	autocrlf = input
+	editor = vim
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+[user]
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGrYjTHs0f5NUaIliCV+iXOoInSmkNSj7mtexuCiuI9B
+	name = Jeremy Jackson
+	email = jejacks0n@gmail.com
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[commit]
+	gpgsign = true
+[push]
+	default = current
+	autoSetupRemote = true
+[pull]
+	rebase = true
+[color]
+	ui = auto
+	branch = auto
+	diff = auto
+	interactive = auto
+	status = auto
+[color "branch"]
+	current = yellow reverse
+	local = yellow
+	remote = green
+[color "diff"]
+	meta = yellow bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
+[color "status"]
+	added = green
+	changed = brightblue
+	untracked = brightred
+	unmerged = brightred bold
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	st = status

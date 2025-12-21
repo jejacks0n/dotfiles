@@ -1,0 +1,6 @@
+.idea
+.vscode
+.rspec
+.bundle
+.DS_Store
+.envrc

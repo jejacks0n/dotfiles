@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Generate a hash so chezmoi will run this whenever our Brewfile changes.
+# Brewfile hash: {{ include "dot_config/brew/Brewfile" | sha256sum }}
+
+# Install / Update packages.
+if command -v brew >/dev/null 2>&1; then
+  echo "🍺 Brewfile changed. Updating packages..."
+
+  brew bundle --file=~/.config/brew/Brewfile
+else
+  echo "❌ Homebrew is not yet installed."
+fi

@@ -1,0 +1,224 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
+
+version: 4
+upgrade:
+  source: cdn
+  interval: 168h
+  auto: false
+  notice: true
+async: true
+iterm_features: [ "current_dir", "remote_host" ]
+console_title_template: "{{.Shell}} ::{{if .Root}} root ::{{end}} {{.PWD}}"
+transient_prompt: # Transient prompt, which clears the prompt upon enter.
+  background: transparent
+  foreground: "#999999"
+  template: "〉"
+secondary_prompt: # Secondary prompt, when the command spans multiple lines.
+  background: transparent
+  foreground: "#999999"
+  template: "〉"
+blocks:
+  # Primary left prompt, which displays user and path information.
+  - alignment: left
+    type: prompt
+    segments:
+      - type: text
+        style: plain
+        template: "╭"
+        foreground: "#CCCCCC"
+      - type: text
+        style: plain
+        template: "─"
+        foreground: "#888888"
+      - type: text
+        style: plain
+        template: "─"
+        foreground: "#555555"
+      - type: session
+        style: diamond
+        leading_diamond: ""
+        trailing_diamond: 
+        template: " {{ if .Root }} {{ else }} {{ end }}{{ .UserName }} "
+        foreground: "#FFFFFF"
+        background: "#666666"
+        background_templates:
+          - "{{ if .Root }}#F23838{{ end }}"
+      - type: path
+        style: powerline
+        powerline_symbol: 
+        template: ' {{ if hasPrefix (printf "%s/Projects" .Env.HOME) .Env.PWD }}󱃪 {{ else }}󰉋 {{ end }}{{ .Path }} '
+        foreground: "#FFFFFF"
+        background: "#F74F9E"
+        background_templates:
+          - '{{ if hasPrefix (printf "%s/Projects" .Env.HOME) .Env.PWD }}#2ECC71{{ end }}'
+          - "{{ if .Env.SYSTEM_TINT_COLOR }}#{{ .Env.SYSTEM_TINT_COLOR }}{{ end }}"
+        properties:
+          folder_separator_icon: /
+          style: mixed
+          mixed_threshold: 6
+          mapped_locations:
+            "~/Projects": "~/.."
+
+  # First line right prompt -- command success, exec time, and library versions.
+  - alignment: right
+    type: prompt
+    segments:
+      - type: text
+        style: plain
+        template: "· ─["
+        foreground: "#666666"
+      - type: status
+        style: plain
+        foreground: "#22E636"
+        template: "{{ if .Error }}<#E64922>✘</>{{else}}󰸞{{ end }} "
+        options:
+          always_enabled: true
+      - type: executiontime
+        style: plain
+        template: "{{ .FormattedMs }}"
+        foreground: "#444444"
+        options:
+          always_enabled: true
+      - type: node
+        style: plain
+        foreground: "#6CA35E"
+        template: "  {{ if .PackageManagerIcon }}{{ .PackageManagerIcon }} {{ end }}{{ .Full }}"
+        options:
+          fetch_version: true
+      - type: npm
+        style: plain
+        foreground: "#ffeb3b"
+        template: "  {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}"
+        options:
+          fetch_version: true
+      - type: react
+        style: plain
+        foreground: "#81a1c1"
+        template: "  {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}"
+        options:
+          fetch_version: true
+          display_mode: always
+      - type: svelte
+        style: plain
+        foreground: "#1976d2"
+        template: "  {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}"
+        options:
+          fetch_version: true
+      - type: yarn
+        style: plain
+        foreground: "#2E2A65"
+        template: " 󰄛 {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}"
+        options:
+          fetch_version: true
+      - type: ruby
+        style: plain
+        template: "  {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}"
+        foreground: "#E33f29"
+        options:
+          display_mode: files
+          fetch_version: true
+      - type: go
+        style: plain
+        template: "  {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}"
+        foreground: "#8ED1F7"
+        options:
+          fetch_version: true
+      - type: julia
+        style: plain
+        template: "  {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}"
+        foreground: "#4063D8"
+        options:
+          fetch_version: true
+      - type: python
+        style: plain
+        template: "  {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}"
+        foreground: "#FFDE57"
+        options:
+          display_mode: files
+          fetch_virtual_env: false
+      - type: azfunc
+        style: plain
+        template: "  {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}"
+        foreground: "#FEAC19"
+        options:
+          display_mode: files
+          fetch_version: true
+      - type: docker
+        style: plain
+        foreground: "#4290d5"
+        template: "  "
+        options:
+          display_mode: files
+      - type: text
+        style: plain
+        template: "\u005D"
+        foreground: "#666666"
+
+  # Git prompt -- only shows if current path is a git repo
+  # https://ohmyposh.dev/docs/segments/scm/git
+  # https://www.nerdfonts.com/cheat-sheet
+  - type: prompt
+    alignment: left
+    segments:
+      - type: git
+        style: plain
+        template: "<#666666>├[ </><#999999>{{ .UpstreamIcon }}{{ trunc 60 .HEAD }}</>{{ if .BranchStatus }} {{ .BranchStatus }} {{ end }}{{ if gt .StashCount 0 }}[<#E8C120></> {{ .StashCount }}]{{ end }}{{ if .Working.Changed }}[<#E8C120></>{{ if gt .Working.Unmerged 0 }} <#DE6A66>x{{ .Working.Unmerged }}</>{{ end }}{{ if gt .Working.Untracked 0 }} <#E88F89>?{{ .Working.Untracked }}</>{{ end }}{{ if gt .Working.Added 0 }} <#73BD79>+{{ .Working.Added }}</>{{ end }}{{ if gt .Working.Modified 0 }} <#70AEFF>~{{ .Working.Modified }}</>{{ end }}{{ if gt .Working.Deleted 0 }} <#676767>-{{ .Working.Deleted }}</>{{ end }}]{{ end }}{{ if .Staging.Changed }}[<#E8C120></>{{ if gt .Staging.Added 0 }} <#73BD79>+{{ .Staging.Added }}</>{{ end }}{{ if gt .Staging.Modified 0 }} <#70AEFF>~{{ .Staging.Modified }}</>{{ end }}{{ if gt .Staging.Deleted 0 }} <#676767>-{{ .Staging.Deleted }}</>{{ end }}]{{ end }}"
+        foreground: "#333333"
+        options:
+          # fetch_upstream_icon: true
+          branch_icon: "<#444444> </>"
+          commit_icon: "<#444444> </>"
+          tag_icon: "<#444444> </>"
+          rebase_icon: "<#444444> </>"
+          cherry_pick_icon: "<#444444> </>"
+          revert_icon: "<#444444> </>"
+          merge_icon: "<#444444> </>"
+          no_commits_icon: "<#444444> </>"
+          branch_identical_icon: "<#22E636>≡</>"
+          branch_ahead_icon: "<#E8C120>↑</>"
+          branch_behind_icon: "<#E8C120>↓</>"
+          branch_gone_icon: "<#E64922>≢</>"
+          fetch_status: true
+          mapped_branches:
+            jejacks0n/*: "you/"
+
+#  # Cloud prompt -- shows AWS and GCP info if available in env vars or config files.
+#  - type: prompt
+#    alignment: right
+#    segments:
+#      - type: aws
+#        style: plain
+#        template: "  {{ .Profile }}{{ if .Region }}@{{ .Region }}{{ end }} "
+#        foreground: "#FFA400"
+#        foreground_templates:
+#          - '{{ if contains "default" .Profile }}#FFA400{{ end }}'
+#          - '{{ if contains "jan" .Profile }}#F1184C{{ end }}'
+#        options:
+#          display_default: false
+#      - type: gcp
+#        style: plain
+#        foreground: "#47888d"
+#        template: "  {{.Project}} :: {{.Account}} "
+
+#  # Prompt that always displays some static text on the right side.
+#  - alignment: right
+#    type: rprompt
+#    segments:
+#      - type: text
+#        style: plain
+#        foreground: "#999999"
+#        template: "asdasdasd2"
+
+  # And finally, the input prompt.
+  - alignment: left
+    type: prompt
+    newline: true
+    segments:
+      - type: text
+        style: plain
+        template: "╰─"
+        foreground: "#666666"
+      - type: text
+        style: plain
+        template: "/ "
+        foreground: "#999999"
