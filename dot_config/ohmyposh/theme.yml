@@ -151,7 +151,7 @@ blocks:
           display_mode: files
       - type: text
         style: plain
-        template: "\u005D"
+        template: "]"
         foreground: "#666666"
 
   # Git prompt -- only shows if current path is a git repo
@@ -162,8 +162,8 @@ blocks:
     segments:
       - type: git
         style: plain
-        template: "<#666666>├[ </><#999999>{{ .UpstreamIcon }}{{ trunc 60 .HEAD }}</>{{ if .BranchStatus }} {{ .BranchStatus }} {{ end }}{{ if gt .StashCount 0 }}[<#E8C120></> {{ .StashCount }}]{{ end }}{{ if .Working.Changed }}[<#E8C120></>{{ if gt .Working.Unmerged 0 }} <#DE6A66>x{{ .Working.Unmerged }}</>{{ end }}{{ if gt .Working.Untracked 0 }} <#E88F89>?{{ .Working.Untracked }}</>{{ end }}{{ if gt .Working.Added 0 }} <#73BD79>+{{ .Working.Added }}</>{{ end }}{{ if gt .Working.Modified 0 }} <#70AEFF>~{{ .Working.Modified }}</>{{ end }}{{ if gt .Working.Deleted 0 }} <#676767>-{{ .Working.Deleted }}</>{{ end }}]{{ end }}{{ if .Staging.Changed }}[<#E8C120></>{{ if gt .Staging.Added 0 }} <#73BD79>+{{ .Staging.Added }}</>{{ end }}{{ if gt .Staging.Modified 0 }} <#70AEFF>~{{ .Staging.Modified }}</>{{ end }}{{ if gt .Staging.Deleted 0 }} <#676767>-{{ .Staging.Deleted }}</>{{ end }}]{{ end }}"
-        foreground: "#333333"
+        template: "├[ <#999999>{{ .UpstreamIcon }}{{ trunc 60 .HEAD }}</>{{ if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if gt .StashCount 0 }} | <#E8C120></> {{ .StashCount }}{{ end }}{{ if .Working.Changed }} | <#E8C120></>{{ if gt .Working.Unmerged 0 }} <#DE6A66>x{{ .Working.Unmerged }}</>{{ end }}{{ if gt .Working.Untracked 0 }} <#E88F89>?{{ .Working.Untracked }}</>{{ end }}{{ if gt .Working.Added 0 }} <#73BD79>+{{ .Working.Added }}</>{{ end }}{{ if gt .Working.Modified 0 }} <#70AEFF>~{{ .Working.Modified }}</>{{ end }}{{ if gt .Working.Deleted 0 }} <#676767>-{{ .Working.Deleted }}</>{{ end }}{{ end }}{{ if .Staging.Changed }} | <#E8C120></>{{ if gt .Staging.Added 0 }} <#73BD79>+{{ .Staging.Added }}</>{{ end }}{{ if gt .Staging.Modified 0 }} <#70AEFF>~{{ .Staging.Modified }}</>{{ end }}{{ if gt .Staging.Deleted 0 }} <#676767>-{{ .Staging.Deleted }}</>{{ end }}{{ end }} ]\n"
+        foreground: "#666666"
         options:
           # fetch_upstream_icon: true
           branch_icon: "<#444444> </>"
@@ -199,7 +199,13 @@ blocks:
 #        style: plain
 #        foreground: "#47888d"
 #        template: "  {{.Project}} :: {{.Account}} "
-
+#      - type: git
+#        style: plain
+#        template: "·"
+#        foreground: "#111111"
+#        options:
+#          fetch_status: false
+#
 #  # Prompt that always displays some static text on the right side.
 #  - alignment: right
 #    type: rprompt
@@ -212,7 +218,6 @@ blocks:
   # And finally, the input prompt.
   - alignment: left
     type: prompt
-    newline: true
     segments:
       - type: text
         style: plain
