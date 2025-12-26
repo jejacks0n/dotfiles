@@ -1,6 +1,6 @@
 #!/bin/sh
 
-echo "🗂️ Initializing Finder..."
+echo "🗂  Initializing Finder..."
 
 # Set Finder to open new windows in the Home directory (~)
 defaults write com.apple.finder NewWindowTarget -string "PfHm"

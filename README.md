@@ -8,9 +8,7 @@ These are your dotfiles.
 Install homebrew, chezmoi, and then apply your dotfiles.
 
 ```sh
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-brew install chezmoi
-chezmoi init --apply jejacks0n
+S="$HOME/Library/Mobile Documents/com~apple~CloudDocs/.bootstrap/bootstrap.sh"; while [ ! -s "$S" ]; do brctl download "$S" 2>/dev/null; sleep 1; done; sh "$S"
 ```
 
 ### Finalizing

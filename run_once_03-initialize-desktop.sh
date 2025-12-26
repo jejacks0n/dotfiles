@@ -1,6 +1,6 @@
 #!/bin/sh
 
-echo "🖥️ Initializing Desktop..."
+echo "🖥  Initializing Desktop..."
 
 ASSET_PATH="$HOME/.local/share/chezmoi/assets"
 

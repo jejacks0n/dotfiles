@@ -48,7 +48,7 @@
 # # Just for example:
 # resize-overlay-duration = 4s 200ms
 
-background = 2e2e2e
+background = 252525
 background-opacity = 0.95
 background-blur-radius = 10
 
