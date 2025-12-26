@@ -15,7 +15,7 @@ chezmoi init --apply jejacks0n
 
 ### Finalizing
 
-You'll need to enter a few licenses.
+You'll need to enter a few licenses, and go through system settings that can easily be automated.
 
 ### Maintaining
 
