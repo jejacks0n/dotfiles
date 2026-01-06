@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Only run if the config folder doesn't exist yet
+# Only run if the config folder doesn't exist yet.
 NVIM_CONFIG="$HOME/.config/nvim"
 if [ ! -d "$NVIM_CONFIG" ]; then
   echo "💤 Installing LazyVim..."

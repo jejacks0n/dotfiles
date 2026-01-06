@@ -57,7 +57,7 @@ COMPLETION_WAITING_DOTS="true"
 # HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM="$HOME/.config/zsh"
+ ZSH_CUSTOM="$HOME/.config/zsh"
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
@@ -106,16 +106,6 @@ fi
 
 # Define a function to open RubyMine in the background.
 function mine() { open -na "RubyMine.app" --args "$@" > /dev/null 2>&1 }
-
-# Setup aliases for basic chezmoi configuration editing.
-alias dotconfig='brew bundle dump -f --file="$(chezmoi source-path ~/.config/brew/Brewfile)" && mine $(chezmoi source-path)'
-
-# Ensure cute is installed (exeCUTEs commands from Markdown files.)
-CUTE_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/cute"
-if [ ! -d "$CUTE_DIR" ]; then
-  git clone https://github.com/ras0q/cute "$CUTE_DIR"
-fi
-source "$CUTE_DIR/cute"
 
 # Get the MacOS system tint color from defaults.
 RAW_CUSTOM=$(defaults read NSGlobalDomain AppleIconAppearanceCustomTintColor 2>/dev/null)

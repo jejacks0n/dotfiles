@@ -7,13 +7,13 @@ if [ ! -d "$HOME/.oh-my-zsh" ]; then
 fi
 
 # Install Zsh Syntax Highlighting.
-if [ ! -d "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting" ]; then
+if [ ! -d "${ZSH_CUSTOM:-$HOME/.config/zsh}/plugins/zsh-syntax-highlighting" ]; then
   echo "🎨 Installing zsh-syntax-highlighting..."
-  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-$HOME/.config/zsh}/plugins/zsh-syntax-highlighting
 fi
 
 # Install Zsh Autosuggestions.
-if [ ! -d "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions" ]; then
+if [ ! -d "${ZSH_CUSTOM:-$HOME/.confg/zsh}/plugins/zsh-autosuggestions" ]; then
   echo "💡 Installing zsh-autosuggestions..."
-  git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+  git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-$HOME/.config/zsh}/plugins/zsh-autosuggestions
 fi
