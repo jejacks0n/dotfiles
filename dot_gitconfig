@@ -10,8 +10,8 @@
 	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGrYjTHs0f5NUaIliCV+iXOoInSmkNSj7mtexuCiuI9B
 	name = Jeremy Jackson
 	email = jejacks0n@gmail.com
-[url "git@github.com:"]
-	insteadOf = https://github.com/
+#[url "git@github.com:"]
+#	insteadOf = https://github.com/
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
