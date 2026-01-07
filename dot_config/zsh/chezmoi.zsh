@@ -19,6 +19,6 @@ if [[ -o interactive ]]; then
       fi
     fi
   else
-    chezmoi git -- fetch --quiet &>/dev/null &!
+    chezmoi git -- -c url."https://github.com/".insteadOf="git@github.com:" fetch --quiet &>/dev/null &!
   fi
 fi
