@@ -13,6 +13,6 @@ You'll need to enter a few licenses, and go through system settings that can't e
 
 ### Maintaining
 
-To edit your dotfiles, run `dotconfig`, which will dump the Brewfile and open the chezmoi source directory for editing. You can then make changes and commit them as needed.
+To edit your dotfiles, run `dotconfig`, which will dump the Brewfile and open the chezmoi source directory for editing in neovim. You can then make changes and commit them as needed.
 
 You'll be prompted to apply any updates.
