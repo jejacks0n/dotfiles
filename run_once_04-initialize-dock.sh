@@ -1,6 +1,6 @@
 #!/bin/sh
 
-echo "⚓️ Initializing Dock..."
+echo "⚓️ Initializing Dock Settings..."
 
 # Autohide and magnification.
 defaults write com.apple.dock autohide -bool true

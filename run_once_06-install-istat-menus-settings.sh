@@ -1,6 +1,6 @@
 #!/bin/sh
 
-echo "📊 Importing iStat Menus settings..."
+echo "📊 Importing iStat Menus Settings..."
 
 ASSET_PATH="$HOME/.local/share/chezmoi/assets"
 ISTAT_CONFIG="$ASSET_PATH/istat-menus-settings.ismp7"

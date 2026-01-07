@@ -1,7 +1,7 @@
 Dotfiles
 ========
 
-These are your dotfiles.
+These are your MacOS dotfiles.
 
 ```sh
 sh -c "$(curl -fsLS https://jejacks0n.github.io/dotfiles)"

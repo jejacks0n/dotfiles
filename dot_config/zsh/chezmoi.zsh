@@ -8,8 +8,8 @@ if [[ -o interactive ]]; then
   CM_BEHIND=$(chezmoi git -- rev-list --count "HEAD..origin/main" 2>/dev/null)
 
   if [[ "$CM_BEHIND" -gt 0 || "$CM_UNCOMMITTED" -gt 0 ]]; then
-    echo -e "\033[35m╭─ ◆ Dotfiles Update Available\033[0m"
-    echo -ne "\033[35m╰─\033[0m Run \033[92m'chezmoi update'\033[0m now? [Y/n] "
+    echo -e "\033[34m╭─ ◆ Dotfiles Update Available\033[0m"
+    echo -ne "\033[34m╰─\033[0m Run \033[92m'chezmoi update'\033[0m now? [Y/n] "
     read -n 1
     if [[ "$1" =~ ^[Yy]$ || "$1" == "" ]] then
       if [[ "$CM_BEHIND" -gt 0 ]]; then

@@ -19,4 +19,4 @@ while [ -f "$HOME/.cache/chezmoi/.reinit" ]; do
   chezmoi init --apply
 done
 
-echo "✅ Bootstrap complete."
+echo "✅ Bootstrap Complete."
