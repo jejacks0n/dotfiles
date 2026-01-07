@@ -15,3 +15,6 @@ defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
 # Apply changes
 killall -HUP Finder
 killall SystemUIServer
+
+# Make sure chezmoi has the ssl enabled remote.
+chezmoi git remote set-url origin git@github.com:jejacks0n/dotfiles.git
