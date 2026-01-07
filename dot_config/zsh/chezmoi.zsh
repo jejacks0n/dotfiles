@@ -1,6 +1,5 @@
 # Setup aliases for basic chezmoi configuration editing.
 alias dotconfig='brew bundle dump -f --file="$(chezmoi source-path ~/.config/brew/Brewfile)" && mine $(chezmoi source-path)'
-alias cm 'chezmoi'
 
 # Prompt for updates when dotfiles have changed.
 if [[ -o interactive ]]; then
