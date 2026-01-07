@@ -13,11 +13,12 @@ if [[ -o interactive ]]; then
     read -n 1
     if [[ "$1" =~ ^[Yy]$ || "$1" == "" ]] then
       if [[ "$CM_BEHIND" -gt 0 ]]; then
-        chezmoi git -- fetch --quiet &>/dev/null
         chezmoi update && source ~/.zshrc
       else
         chezmoi apply # && source ~/.zshrc
       fi
     fi
+  else
+    chezmoi git -- fetch --quiet &>/dev/null &!
   fi
 fi
