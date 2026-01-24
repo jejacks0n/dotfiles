@@ -145,7 +145,7 @@ eval "$(direnv hook zsh)"
 source <(fzf --zsh)
 
 # Replace cat with bat.
-alias cat="bat --paging=never"
+#alias cat="bat --paging=never"
 
 # Use Oh My Posh for prompt management with our custom theme.
 eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/theme.yml)"
