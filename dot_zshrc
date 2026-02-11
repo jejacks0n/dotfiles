@@ -150,6 +150,9 @@ source <(fzf --zsh)
 # Use Oh My Posh for prompt management with our custom theme.
 eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/theme.yml)"
 
+# Make sure .local/bin is in your PATH.
+export PATH="$HOME/.local/bin:$PATH"
+
 # Custom key bindings.
 bindkey '^[^I' end-of-line # Option+Tab to accept full autosuggestion,
                            # Option+Right to accept next word.
