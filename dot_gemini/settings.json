@@ -1,0 +1,28 @@
+{
+  "hooks": {
+    "Notification": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "name": "notify-needs-input",
+            "type": "command",
+            "command": "osascript -e 'display notification \"Gemini needs input!\" with title \"Gemini CLI\" sound name \"Glass\"'"
+          }
+        ]
+      }
+    ],
+    "AfterAgent": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "name": "notify-done",
+            "type": "command",
+            "command": "say 'Gemini is finished'"
+          }
+        ]
+      }
+    ]
+  }
+}

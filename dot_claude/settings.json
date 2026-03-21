@@ -2,14 +2,24 @@
   "hooks": {
     "Notification": [
       {
-        "type": "command",
-        "command": "osascript -e 'display notification \"Claude needs input!\" with title \"Claude Code\" sound name \"Glass\"'"
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "osascript -e 'display notification \"Claude needs input!\" with title \"Claude Code\" sound name \"Glass\"'"
+          }
+        ]
       }
     ],
     "Stop": [
       {
-        "type": "command",
-        "command": "say 'Claude is finished'"
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "say 'Claude is finished'"
+          }
+        ]
       }
     ]
   }
