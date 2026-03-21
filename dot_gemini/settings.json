@@ -7,7 +7,7 @@
           {
             "name": "notify-needs-input",
             "type": "command",
-            "command": "osascript -e 'display notification \"Gemini needs input!\" with title \"Gemini CLI\" sound name \"Glass\"'"
+            "command": "terminal-notifier -title 'Gemini CLI' -message 'Gemini needs your input.' -sound 'Glass' -contentImage '$HOME/.gemini/gemini.png'"
           }
         ]
       }
@@ -19,7 +19,7 @@
           {
             "name": "notify-done",
             "type": "command",
-            "command": "say 'Gemini is finished'"
+            "command": "terminal-notifier -title 'Gemini CLI' -message 'Gemini is finished!' -sound 'Hero' -contentImage '$HOME/.gemini/gemini.png'"
           }
         ]
       }
