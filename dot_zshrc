@@ -130,6 +130,9 @@ fi
 export LS_COLORS="$(vivid generate <(sed "s/SYSTEM_TINT_COLOR/$SYSTEM_TINT_COLOR/g" $HOME/.config/vivid/theme.yml))"
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 
+# Use Secretive as the SSH agent.
+export SSH_AUTH_SOCK=~/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
+
 # Setup eza (ls replacement) with our custom theme.
 export EZA_CONFIG_DIR="$HOME/.config/eza"
 alias ls="eza -lahF --group-directories-first --no-time --git --icons=auto"

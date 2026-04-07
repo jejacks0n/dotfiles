@@ -4,14 +4,12 @@
 	editor = vim
 [gpg]
 	format = ssh
-[gpg "ssh"]
-	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
 [user]
-	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGrYjTHs0f5NUaIliCV+iXOoInSmkNSj7mtexuCiuI9B
 	name = Jeremy Jackson
 	email = jejacks0n@gmail.com
-#[url "git@github.com:"]
-#	insteadOf = https://github.com/
+[gpg "ssh"]
+	allowedSignersFile = ~/.config/git/allowedsigners
+	defaultKeyCommand = sh -c 'ssh-add -L | awk NF=2 | sed s/^/key::/'
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
@@ -49,3 +47,5 @@
 	br = branch
 	ci = commit
 	st = status
+#[url "git@github.com:"]
+#	insteadOf = https://github.com/
