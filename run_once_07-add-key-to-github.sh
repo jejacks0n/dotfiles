@@ -6,7 +6,7 @@ pubkey=$(ssh-add -L 2>/dev/null | grep -E '^(ssh-|ecdsa-)' | head -1)
 hostname=$(scutil --get ComputerName)
 if [ -z "$pubkey" ]; then
   echo ""
-  echo "🔑  Secretive setup required"
+  echo "🔑 Secretive setup required"
   echo "   1. Click '+' in Secretive to create a new key (Ed25519 recommended)"
   echo "   2. Name it something like '$hostname'"
   echo ""
