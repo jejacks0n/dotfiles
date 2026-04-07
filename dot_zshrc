@@ -159,3 +159,6 @@ export PATH="$HOME/.local/bin:$PATH"
 # Custom key bindings.
 bindkey '^[^I' end-of-line # Option+Tab to accept full autosuggestion,
                            # Option+Right to accept next word.
+
+# Keep commands that start with a space out of the history, for secret protection.
+setopt HIST_IGNORE_SPACE
