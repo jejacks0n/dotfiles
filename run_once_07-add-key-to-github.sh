@@ -22,9 +22,13 @@ if [ -z "$pubkey" ]; then
   echo ""
 fi
 
-gh_scopes=$(gh auth status 2>&1)
-if ! echo "$gh_scopes" | grep -q "admin:public_key" || ! echo "$gh_scopes" | grep -q "admin:ssh_signing_key"; then
-  gh auth refresh -h github.com -s admin:public_key,admin:ssh_signing_key
+if ! gh auth status -h github.com &>/dev/null; then
+  gh auth login -h github.com -s admin:public_key,admin:ssh_signing_key
+else
+  gh_scopes=$(gh auth status 2>&1)
+  if ! echo "$gh_scopes" | grep -q "admin:public_key" || ! echo "$gh_scopes" | grep -q "admin:ssh_signing_key"; then
+    gh auth refresh -h github.com -s admin:public_key,admin:ssh_signing_key
+  fi
 fi
 
 echo "$pubkey" | gh ssh-key add - --title "$hostname" --type authentication
