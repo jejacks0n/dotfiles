@@ -67,7 +67,6 @@ COMPLETION_WAITING_DOTS="true"
 plugins=(
   git
   gh
-  asdf
   dotenv
   docker
   macos
@@ -144,6 +143,9 @@ alias cd="z"
 # Hook in direnv.
 eval "$(direnv hook zsh)"
 
+# Activate mise (runtime & tool version manager, replaces asdf).
+eval "$(mise activate zsh)"
+
 # Set up fzf key bindings and fuzzy completion.
 source <(fzf --zsh)
 
@@ -162,3 +164,9 @@ bindkey '^[^I' end-of-line # Option+Tab to accept full autosuggestion,
 
 # Keep commands that start with a space out of the history, for secret protection.
 setopt HIST_IGNORE_SPACE
+
+# Added by Antigravity CLI installer
+export PATH="/Users/jejacks0n/.local/bin:$PATH"
+
+# Added by Antigravity IDE
+export PATH="/Users/jejacks0n/.antigravity-ide/antigravity-ide/bin:$PATH"

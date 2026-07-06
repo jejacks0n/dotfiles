@@ -24,5 +24,16 @@
         ]
       }
     ]
+  },
+  "security": {
+    "auth": {
+      "selectedType": "oauth-personal"
+    }
+  },
+  "ide": {
+    "hasSeenNudge": true
+  },
+  "general": {
+    "preferredEditor": "vim"
   }
 }
