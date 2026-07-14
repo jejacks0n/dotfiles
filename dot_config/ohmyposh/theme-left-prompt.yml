@@ -1,5 +1,6 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
-# ╭──  jejacks0n  󰉋~/.local/share/chezmoi                                   · ─[󰸞 0ms version data if there is any ]
+# ╭──  jejacks0n  󰸞 0ms  󰉋~/.local/share/chezmoi 
+# ├[ version data if there is any ]
 # ├[ git info if there is any ]
 # ╰─/
 
@@ -21,9 +22,10 @@ secondary_prompt: # Secondary prompt, when the command spans multiple lines.
   foreground: "#999999"
   template: "〉"
 blocks:
-  # Primary left prompt, which displays user, command success, exec time, and path information.
+  # Primary left prompt, which displays user,  and path information.
   - alignment: left
     type: prompt
+    newline: true
     segments:
       - type: text
         style: plain
@@ -61,27 +63,37 @@ blocks:
           mixed_threshold: 6
           mapped_locations:
             "~/Projects": "~/.."
-
-  # First line right prompt -- command success, exec time, and library versions.
-  - alignment: right
-    type: prompt
-    segments:
-      - type: text
-        style: plain
-        template: "· ─["
-        foreground: "#666666"
       - type: status
-        style: plain
-        foreground: "#22E636"
-        template: "{{ if .Error }}<#E64922>✘</>{{else}}󰸞{{ end }} "
+        style: powerline
+        powerline_symbol: 
+        template: " {{ if .Error }}<#F23838>✘</>{{ else }}<#2ECC71>󰸞</>{{ end }}{{ .Segments.Executiontime.FormattedMs }} "
+        foreground: "#FFFFFF"
+        background: "#333333"
         options:
           always_enabled: true
+      # Data-only segment: feeds .Segments.Executiontime.FormattedMs to the status
+      # segment above. always_enabled populates the cross-segment cache during the
+      # concurrent execute phase; the go-template comment renders nothing so this
+      # segment stays invisible. It MUST come AFTER status: a segment that renders
+      # empty removes itself from the .Segments cache during render, so it has to
+      # render after status has already read the value.
       - type: executiontime
         style: plain
-        template: "{{ .FormattedMs }}"
-        foreground: "#444444"
+        template: "{{/* hidden feeder for status segment */}}"
         options:
           always_enabled: true
+
+  - alignment: left
+    type: prompt
+    newline: true
+    segments:
+      # Opening bracket: only render when at least one language segment below is
+      # active, so the whole block collapses (length 0 => auto-hidden, no newline)
+      # when there's nothing to show. Keep this list in sync with the segments below.
+      - type: text
+        style: plain
+        template: '{{ if or (.Segments.Contains "Node") (.Segments.Contains "Npm") (.Segments.Contains "React") (.Segments.Contains "Svelte") (.Segments.Contains "Yarn") (.Segments.Contains "Ruby") (.Segments.Contains "Go") (.Segments.Contains "Julia") (.Segments.Contains "Python") (.Segments.Contains "Azfunc") (.Segments.Contains "Docker") }}├[{{ end }}'
+        foreground: "#666666"
       - type: node
         style: plain
         foreground: "#6CA35E"
@@ -100,7 +112,9 @@ blocks:
         template: "  {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}"
         options:
           fetch_version: true
-          display_mode: always
+          # was "always" (rendered unconditionally, which kept this block from
+          # ever hiding); "files" only shows react when project files are present.
+          display_mode: files
       - type: svelte
         style: plain
         foreground: "#1976d2"
@@ -152,9 +166,10 @@ blocks:
         template: "  "
         options:
           display_mode: files
+      # Closing bracket: same condition as the opening bracket above.
       - type: text
         style: plain
-        template: "]"
+        template: '{{ if or (.Segments.Contains "Node") (.Segments.Contains "Npm") (.Segments.Contains "React") (.Segments.Contains "Svelte") (.Segments.Contains "Yarn") (.Segments.Contains "Ruby") (.Segments.Contains "Go") (.Segments.Contains "Julia") (.Segments.Contains "Python") (.Segments.Contains "Azfunc") (.Segments.Contains "Docker") }}]{{ end }}'
         foreground: "#666666"
 
   # Git prompt -- only shows if current path is a git repo
@@ -185,39 +200,6 @@ blocks:
           fetch_status: true
           mapped_branches:
             jejacks0n/*: "you/"
-
-#  # Cloud prompt -- shows AWS and GCP info if available in env vars or config files.
-#  - type: prompt
-#    alignment: right
-#    segments:
-#      - type: aws
-#        style: plain
-#        template: "  {{ .Profile }}{{ if .Region }}@{{ .Region }}{{ end }} "
-#        foreground: "#FFA400"
-#        foreground_templates:
-#          - '{{ if contains "default" .Profile }}#FFA400{{ end }}'
-#          - '{{ if contains "jan" .Profile }}#F1184C{{ end }}'
-#        options:
-#          display_default: false
-#      - type: gcp
-#        style: plain
-#        foreground: "#47888d"
-#        template: "  {{.Project}} :: {{.Account}} "
-#      - type: git
-#        style: plain
-#        template: "·"
-#        foreground: "#111111"
-#        options:
-#          fetch_status: false
-#
-#  # Prompt that always displays some static text on the right side.
-#  - alignment: right
-#    type: rprompt
-#    segments:
-#      - type: text
-#        style: plain
-#        foreground: "#999999"
-#        template: "asdasdasd2"
 
   # And finally, the input prompt.
   - alignment: left

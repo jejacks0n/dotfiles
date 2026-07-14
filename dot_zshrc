@@ -153,7 +153,13 @@ source <(fzf --zsh)
 #alias cat="bat --paging=never"
 
 # Use Oh My Posh for prompt management with our custom theme.
-eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/theme.yml)"
+# Set LEFT_PROMPT to use the variant that drops the right prompt.
+if [[ -n "$LEFT_PROMPT" ]]; then
+  omp_theme="$HOME/.config/ohmyposh/theme-left-prompt.yml"
+else
+  omp_theme="$HOME/.config/ohmyposh/theme.yml"
+fi
+eval "$(oh-my-posh init zsh --config $omp_theme)"
 
 # Make sure .local/bin is in your PATH.
 export PATH="$HOME/.local/bin:$PATH"
