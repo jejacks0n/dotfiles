@@ -47,5 +47,8 @@
 	br = branch
 	ci = commit
 	st = status
+	# Safer force-push: refuses if the remote moved unexpectedly, and
+	# --force-if-includes guards against a background fetch defeating the lease.
+	pushf = push --force-with-lease --force-if-includes
 #[url "git@github.com:"]
 #	insteadOf = https://github.com/
