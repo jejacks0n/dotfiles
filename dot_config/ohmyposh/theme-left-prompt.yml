@@ -66,7 +66,7 @@ blocks:
       - type: status
         style: powerline
         powerline_symbol: 
-        template: " {{ if .Error }}<#F23838>✘</>{{ else }}<#2ECC71>󰸞</>{{ end }}{{ .Segments.Executiontime.FormattedMs }} "
+        template: " {{ if .Error }}<#F23838>✘</>{{ else }}<#2ECC71>󰸞</>{{ end }} {{ .Segments.Executiontime.FormattedMs }} "
         foreground: "#FFFFFF"
         background: "#333333"
         options:
