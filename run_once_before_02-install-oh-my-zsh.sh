@@ -13,7 +13,7 @@ if [ ! -d "${ZSH_CUSTOM:-$HOME/.config/zsh}/plugins/zsh-syntax-highlighting" ]; 
 fi
 
 # Install Zsh Autosuggestions.
-if [ ! -d "${ZSH_CUSTOM:-$HOME/.confg/zsh}/plugins/zsh-autosuggestions" ]; then
+if [ ! -d "${ZSH_CUSTOM:-$HOME/.config/zsh}/plugins/zsh-autosuggestions" ]; then
   echo "💡 Installing zsh-autosuggestions..."
   git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-$HOME/.config/zsh}/plugins/zsh-autosuggestions
 fi
