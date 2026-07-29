@@ -59,8 +59,6 @@ cask "daisydisk"
 cask "ghostty"
 # System monitoring app
 cask "istat-menus"
-# VPN client for secure internet access and private browsing
-cask "nordvpn"
 # Ruby on Rails IDE
 cask "rubymine"
 # Store SSH keys in the Secure Enclave
